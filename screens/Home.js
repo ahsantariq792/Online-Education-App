@@ -13,20 +13,21 @@ import {
     JosefinSans_500Medium_Italic,
     JosefinSans_600SemiBold_Italic,
     JosefinSans_700Bold_Italic,
-  } from "@expo-google-fonts/josefin-sans";
-  
-  import { useFonts } from "expo-font";
-  import AppLoading from "expo-app-loading";
-  
+} from "@expo-google-fonts/josefin-sans";
 
-const Home = () => {
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
+import Menu from '../components/Menu';
+
+
+const Home = (props) => {
     let [fontsLoad, error] = useFonts({
         JosefinSans_100Thin,
         JosefinSans_200ExtraLight,
-        light : JosefinSans_300Light,
+        light: JosefinSans_300Light,
         regular: JosefinSans_400Regular,
         medium: JosefinSans_500Medium,
-        bold : JosefinSans_700Bold,
+        bold: JosefinSans_700Bold,
         JosefinSans_100Thin_Italic,
         JosefinSans_200ExtraLight_Italic,
         JosefinSans_400Regular_Italic,
@@ -34,21 +35,33 @@ const Home = () => {
         JosefinSans_600SemiBold_Italic,
         JosefinSans_700Bold_Italic,
     });
-    
-    
+
+
     if (!fontsLoad) {
         return <AppLoading />;
     }
-    
+
     const description = "Educational app is one such platform where the students can view as well as listen to the pre-recorded lectures or chapter-wise lessons delivered by instructors. In this way, students get easy access to the classroom at any time of the day"
 
     return (
-        <View style={styles.container}>
-            <View style={styles.main}>
-                <Image resizeMode='contain' style={styles.imageStyle} source={require("../assets/homepage.jpg")} />
-                <Text style={styles.textHeading}>Welcome to Education App</Text>
-                <Text style={styles.description}>{description}</Text>
+        <View>
+            <View style={styles.container}>
+                <View style={styles.main}>
+                    <Image resizeMode='contain' style={styles.imageStyle} source={require("../assets/homepage.jpg")} />
+                    <Text style={styles.textHeading}>Welcome to {props.name} </Text>
+                    <Text style={styles.description}>{description}</Text>
+                </View>
+
+                <View style={styles.menu}>
+                    <View style={styles.lineStyle}></View>
+                    <Menu />
+
+                    <View style={styles.lineStyle}></View>
+
+                </View>
+
             </View>
+
         </View>
     )
 }
@@ -85,6 +98,15 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         fontSize: 18,
         lineHeight: 24,
-        fontFamily: "bold"
+        fontFamily: "bold",
+        marginBottom: 50,
+    },
+    menu:{
+        display: "flex",
+        
+    },
+    lineStyle: {
+        borderBottomWidth: 1,
+        marginBottom: 5,
     }
 })
