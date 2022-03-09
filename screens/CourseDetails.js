@@ -1,27 +1,32 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import Courses from "../api/Courses";
-import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
-import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import {
+    JosefinSans_400Regular,
+  } from "@expo-google-fonts/josefin-sans";
+
+import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
+const CourseDetails = ({ navigation, route }) => {
 
-const CourseDetails = () => {
-    let [fontsLoaded] = useFonts({
-        WorkSans_400Regular,
-        Nunito_700Bold,
+    let [fontsLoad, error] = useFonts({
+        JosefinSans_400Regular,
     });
 
-    if (!fontsLoaded) {
-        <AppLoading />;
+
+    if (!fontsLoad) {
+        return <AppLoading />;
     }
+
+    const id = route.params.courseID;
+    const selectedCourse = Courses.find((element) => {
+        return id === element.id;
+    });
 
     return (
         <View>
-            <Text>CourseDetails</Text>
-
-
-            {/* <View style={styles.mainContainer}>
+            <View style={styles.mainContainer}>
                 <View style={styles.courseContainer}>
                     <View>
                         <Image
@@ -31,24 +36,24 @@ const CourseDetails = () => {
                         />
                     </View>
 
-                    <Text style={styles.mainHeader}>{selectedCourse.title}</Text>
+                    <Text style={styles.mainHeader}>{selectedCourse?.title}</Text>
 
-                    <Text style={styles.description}>{selectedCourse.description}</Text>
+                    <Text style={styles.description}>{selectedCourse?.description}</Text>
 
                     <Text style={[styles.description, styles.subCourse]}>
-                        {selectedCourse.course1}
+                        {selectedCourse?.course1}
                     </Text>
 
                     <Text style={[styles.description, styles.subCourse]}>
-                        {selectedCourse.course2}
+                        {selectedCourse?.course2}
                     </Text>
 
                     <Text style={[styles.description, styles.subCourse]}>
-                        {selectedCourse.course3}
+                        {selectedCourse?.course3}
                     </Text>
 
                     <View style={styles.buttonContainer}>
-                        <Text style={styles.price}> {selectedCourse.price} </Text>
+                        <Text style={styles.price}> {selectedCourse?.price} </Text>
                         <TouchableOpacity
                             style={styles.buttonStyle}
                             onPress={() => navigation.navigate("Course")}>
@@ -56,7 +61,7 @@ const CourseDetails = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </View> */}
+            </View>
         </View>
 
     )
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         paddingTop: 10,
         paddingBottom: 15,
-        fontFamily: "Nunito_700Bold",
+        fontFamily: "JosefinSans_400Regular",
         textAlign: "center",
     },
 
@@ -105,7 +110,7 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         fontWeight: "500",
         paddingBottom: 15,
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
         textAlign: "center",
     },
 
@@ -114,7 +119,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "#7d7d7d",
         paddingBottom: 20,
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
         lineHeight: 20,
     },
     subCourse: {
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 1,
         borderTopLeftRadius: 1,
         fontSize: 20,
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
         textAlign: "center",
     },
     buttonStyle: {
@@ -155,9 +160,8 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: "#eee",
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
     },
-
 })
 
 

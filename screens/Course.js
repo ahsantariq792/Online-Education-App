@@ -1,19 +1,23 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import Courses from '../api/Courses'
-import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
-import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+// import { WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+// import { Nunito_700Bold } from "@expo-google-fonts/nunito";
 import AppLoading from "expo-app-loading";
+import { useFonts } from 'expo-font';
+import {
+    JosefinSans_400Regular,
+    JosefinSans_500Medium,
+    JosefinSans_700Bold,
+} from "@expo-google-fonts/josefin-sans";
 
 
 const Course = ({ navigation }) => {
 
-
-
-
-    let [fontsLoaded] = useFonts({
-        WorkSans_400Regular,
-        Nunito_700Bold,
+    let [fontsLoaded, error] = useFonts({
+        JosefinSans_400Regular,
+        JosefinSans_500Medium,
+        JosefinSans_700Bold,
     });
 
     if (!fontsLoaded) {
@@ -40,7 +44,7 @@ const Course = ({ navigation }) => {
                         <TouchableOpacity
                             style={styles.buttonStyle}
                             onPress={() =>
-                                navigation.navigate("CourseDetails")
+                                navigation.navigate("CourseDetails", { courseID: item.id })
                             }>
                             <Text style={styles.buttonText}> Course Details </Text>
                         </TouchableOpacity>
@@ -90,11 +94,11 @@ const styles = StyleSheet.create({
         // fontWeight: 500,
         paddingBottom: 15,
         textAlign: "center",
-        fontFamily: "Nunito_700Bold",
+        fontFamily: "JosefinSans_700Bold",
     },
     description: {
         textAlign: "left",
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
         paddingBottom: 15,
         lineHeight: 20,
         fontSize: 16,
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: "#eee",
-        fontFamily: "WorkSans_400Regular",
+        fontFamily: "JosefinSans_400Regular",
         textTransform: "capitalize",
     },
 });

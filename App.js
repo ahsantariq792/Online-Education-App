@@ -8,10 +8,10 @@ import About from './screens/About';
 import Course from './screens/Course';
 import UserData from './screens/UserData';
 import CourseDetails from './screens/CourseDetails';
+
+
 export default function App() {
-
   const Stack = createNativeStackNavigator();
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -20,7 +20,6 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="Course" component={Course} options = {{headerTitleAlign: 'center', headerTitleStyle: {fontSize: 28}}}/>
         <Stack.Screen name="CourseDetails" component={CourseDetails} options = {{headerTitleAlign: 'center', headerTitleStyle: {fontSize: 28}}}/>
-
         <Stack.Screen name="UserData" component={UserData} options = {{headerTitleAlign: 'center', headerTitleStyle: {fontSize: 28}}}/>
         <Stack.Screen name="About" component={About} options = {{headerTitleAlign: 'center', headerTitleStyle: {fontSize: 28}}} />
         <Stack.Screen name="Contact" component={Contact} options = {{headerTitleAlign: 'center', headerTitleStyle: {fontSize: 28}}}/>

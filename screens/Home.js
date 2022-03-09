@@ -55,7 +55,6 @@ const Home = (props) => {
                 <View style={styles.menu}>
                     <View style={styles.lineStyle}></View>
                     <Menu />
-
                     <View style={styles.lineStyle}></View>
 
                 </View>
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
     textHeading: {
         fontSize: 28,
         textAlign: 'center',
-        marginVertical: 20,
+        marginVertical: 10,
         fontFamily: "bold",
     },
     description: {
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 24,
         fontFamily: "bold",
-        marginBottom: 50,
+        marginBottom: 40,
     },
     menu:{
         display: "flex",

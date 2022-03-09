@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native-web'
 import { useNavigation } from '@react-navigation/native'
 
 const Menu = () => {
@@ -11,7 +10,7 @@ const Menu = () => {
                 <Image
                     style={styles.iconStytle}
                     source={{
-                        uri: " https://img.icons8.com/stickers/90/000000/training.png",
+                        uri: "https://img.icons8.com/stickers/90/000000/training.png",
                     }}
                 />
             </TouchableOpacity>
